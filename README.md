@@ -12,19 +12,19 @@ Consort consists of a series of python scripts called from a main bash script, t
 ## Python modules
 The following python modules must be installed before running Consort.
 
--HTSeq
+* HTSeq
 
 ## R packages
 Whilst the following R packages are needed they will be installed during the running of Consort if not already installed, however a base installation of R is required.
 
--dada2
--BiocStyle
--phyloseq
--DECIPHER
--phangorn
--ggplot2
--gridextra
--knitr
+* dada2
+* BiocStyle
+* phyloseq
+* DECIPHER
+* phangorn
+* ggplot2
+* gridextra
+* knitr
 
 
 
