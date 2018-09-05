@@ -1,5 +1,5 @@
-# consort
-Consort: amplicon sequence variant based analysis of 16S rRNA datasets from minimal consortia
+# Consort: amplicon sequence variant based analysis of 16S rRNA datasets from minimal consortia
+
 
 
 Consort has been designed to specifically for 16S rRNA analysis of minimal microbial consortia. 
