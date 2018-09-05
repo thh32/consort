@@ -36,5 +36,14 @@ Consort utilises the following programs that must be installed by the user befor
 # Usage
 
 
+# Downstream analysis
+Consort produces three sets of output; the full RSV dataset, the filtered RSV dataset and a taxonomically combined dataset.
+
+Both the RSV datasets are provided for advance users who wish to study the variation within each consortium member, however the taxonomically combined dataset is design for quick downstream analysis and produces files compatible with the Rhea (https://github.com/Lagkouvardos/Rhea) 16S rRNA OTU analysis script set.
+
 
 # Advanced usage
+
+
+
+
