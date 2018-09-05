@@ -9,12 +9,14 @@ By utilising the DADA2 package to conduct amplicon seaquence varient analysis, C
 # Installation
 Consort consists of a series of python scripts called from a main bash script, therefore does not require installation as such however a list of depandancies are provided below;
 
-## Python modules
-The following python modules must be installed before running Consort.
+### Python modules
+The following python modules must be installed before running Consort. These can simple be installed using the `pip install [module]` command on linux/mac machines
 
 * HTSeq
+* glob
 
-## R packages
+
+### R packages
 Whilst the following R packages are needed they will be installed during the running of Consort if not already installed, however a base installation of R is required.
 
 * dada2
@@ -26,7 +28,7 @@ Whilst the following R packages are needed they will be installed during the run
 * gridextra
 * knitr
 
-## Programs
+### Programs
 Consort utilises the following programs that must be installed by the user before running Consort;
 
 * Usearch (64 bit version of 8.1 used in paper)
