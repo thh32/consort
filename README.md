@@ -27,7 +27,9 @@ Whilst the following R packages are needed they will be installed during the run
 * gridextra
 * knitr
 
-
+The following possible errors may occur when installing on an Ubuntu machine;
+* If Rcurl cannot be isntalled try running `sudo apt-get install libcurl4-openssl-dev`
+* 
 ### Programs
 Consort utilises BLASTN to annotate ribosomal sequence varients (RSVs) against the provided reference file containing the 16S rRNA sequences of all consortium members. Therefore an installation of BLAST is required. Testing was conducted using BLAST 2.6.0+.
 
@@ -67,6 +69,8 @@ During the filtering process it is possible that consortium members that are pre
 As discussed within our paper, indepth study of the RSV diversity can provide novel insight into the sample specific, as well as dataset wide diversity of both the consortium members but also contaminants. Visualisation of the `RSV_tree.tre` file can be used to identify single RSV contaminants (likely introduced during sequencing and therefore can be ignored) or clusters of highly related RSVs not asigned to consortium members (presence of multiple highly related RSVs suggested either large scale contamination of the samples during sequencing, or contamination within the host).
 
 The ability to distinguish between single isolate contamination and community contamination is unique to amplicon sequence varient analysis methods (ASV) over operational taxonomic unit (OTU) based analysis as no clustering of highly related sequences occurs.
+
+
 
 
 
