@@ -44,6 +44,7 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 * Defined trimming length for forward and reverse reads
 * Number of mismatches to allow in the barcode
 * Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 30% prevalence with 1 read aligning within each positive sample
+* A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format within the `Reference_files/` folder. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums (https://www.nature.com/articles/nmicrobiol2016215).
 
 
 
