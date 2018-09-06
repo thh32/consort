@@ -13,7 +13,6 @@ Consort consists of a series of python scripts called from a main bash script, t
 The following python modules must be installed before running Consort. These can simple be installed using the `pip install [module]` command on linux/mac machines
 
 * HTSeq
-* glob
 
 
 ### R packages
@@ -28,21 +27,28 @@ Whilst the following R packages are needed they will be installed during the run
 * gridextra
 * knitr
 
+
 ### Programs
 Consort utilises the following programs that must be installed by the user before running Consort;
 
 * Usearch (64 bit version of 8.1 used in paper)
 
 
-
 # Usage
 Consort can accept both single indexed and double indexed paired sequencing datasets.
 
 To run Consort you must enter the Consort directory and then edit the `Consort.sh` file with the following information;
+* Identify ifdataset is single or double indexed
+* Index file/files
+* Sequence files (both R1 and R2)
+* Defined trimming length for forward and reverse reads
+* Number of mismatches to allow in the barcode
+* Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 30% prevalence with 1 read aligning within each positive sample
+
 
 
 # Downstream analysis
-Consort produces three sets of output; the full RSV dataset, the filtered RSV dataset and a taxonomically combined dataset.
+Consort produces three sets of output; the full ribosomal sequence varient (RSV) dataset, the filtered RSV dataset and a taxonomically combined dataset.
 
 Both the RSV datasets are provided for advance users who wish to study the variation within each consortium member, however the taxonomically combined dataset is design for quick downstream analysis and produces files compatible with the Rhea (https://github.com/Lagkouvardos/Rhea) 16S rRNA OTU analysis script set.
 
@@ -52,7 +58,11 @@ The RSV datasets can easily be made acceptable by Rhea by chaning the following 
 
 
 # Advanced usage
+During the filtering process it is possible that consortium members that are present in a subset of the samples or under the defined abundance. Therefore we suggest that users search the `RSV_abundance_table.tab` file for any consortium members not present within the filtered output.
 
+As discussed within our paper, indepth study of the RSV diversity can provide novel insight into the sample specific, as well as dataset wide diversity of both the consortium members but also contaminants. Visualisation of the `RSV_tree.tre` file can be used to identify single RSV contaminants (likely introduced during sequencing and therefore can be ignored) or clusters of highly related RSVs not asigned to consortium members (presence of multiple highly related RSVs suggested either large scale contamination of the samples during sequencing, or contamination within the host).
+
+The ability to distinguish between single isolate contamination and community contamination is unique to amplicon sequence varient analysis methods (ASV) over operational taxonomic unit (OTU) based analysis as no clustering of highly related sequences occurs.
 
 
 
