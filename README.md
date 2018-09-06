@@ -4,7 +4,7 @@
 
 Consort has been designed to specifically for 16S rRNA analysis of minimal microbial consortia. 
 
-By utilising the DADA2 package to conduct amplicon seaquence varient analysis, Consort is able to provide information on both the diversity of each consortium member and its total abundance
+By utilising the DADA2 package to conduct amplicon seaquence varient analysis (https://www.nature.com/articles/nmeth.3869), Consort is able to provide information on both the diversity of each consortium member and its total abundance
 
 # Installation
 Consort consists of a series of python and perl scripts called from a main bash script, therefore does not require installation as such however a list of depandancies are provided below;
