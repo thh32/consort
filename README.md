@@ -48,7 +48,8 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 * Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 30% prevalence with 1 read aligning within each positive sample
 * A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format within the `Reference_files/` folder. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums (https://www.nature.com/articles/nmicrobiol2016215).
 
-
+### Reduce RAM usage
+Consort by default pools all sequencing data for error correction and RSV identification, however the increased sensitivity to rare varients comes at the cost of increased RAM usage. If RAM usage is too high the `Bin/DADA2_analysis.R` script can be edited by changing `pool=TRUE` to `pool=FALSE` on line 146,147,154 and 155. This will mean that error correction will be less accurate and rare varients may be missed and so is not recommended.
 
 # Downstream analysis
 Consort produces three sets of output; the full RSV dataset, the filtered RSV dataset and a taxonomically combined dataset.
