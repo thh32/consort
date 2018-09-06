@@ -29,9 +29,9 @@ Whilst the following R packages are needed they will be installed during the run
 
 
 ### Programs
-Consort utilises the following programs that must be installed by the user before running Consort;
+Consort utilises BLASTN to annotate ribosomal sequence varients (RSVs) against the provided reference file containing the 16S rRNA sequences of all consortium members. Therefore an installation of BLAST is required. Testing was conducted using BLAST 2.6.0+.
 
-* Usearch (64 bit version of 8.1 used in paper)
+Both muscle and FastTree are also used within Consort and are provided within the `Bin` folder ready for use.
 
 
 # Usage
@@ -48,7 +48,7 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 
 
 # Downstream analysis
-Consort produces three sets of output; the full ribosomal sequence varient (RSV) dataset, the filtered RSV dataset and a taxonomically combined dataset.
+Consort produces three sets of output; the full RSV dataset, the filtered RSV dataset and a taxonomically combined dataset.
 
 Both the RSV datasets are provided for advance users who wish to study the variation within each consortium member, however the taxonomically combined dataset is design for quick downstream analysis and produces files compatible with the Rhea (https://github.com/Lagkouvardos/Rhea) 16S rRNA OTU analysis script set.
 
