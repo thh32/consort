@@ -57,9 +57,12 @@ The RSV datasets can easily be made acceptable by Rhea by chaning the following 
 * Taxonomy to taxonomy
 
 
-# Advanced usage
+# Suggested analysis
+### Manual identification of consortium members
 During the filtering process it is possible that consortium members that are present in a subset of the samples or under the defined abundance. Therefore we suggest that users search the `RSV_abundance_table.tab` file for any consortium members not present within the filtered output.
 
+
+### Investigation of potential contamination sources
 As discussed within our paper, indepth study of the RSV diversity can provide novel insight into the sample specific, as well as dataset wide diversity of both the consortium members but also contaminants. Visualisation of the `RSV_tree.tre` file can be used to identify single RSV contaminants (likely introduced during sequencing and therefore can be ignored) or clusters of highly related RSVs not asigned to consortium members (presence of multiple highly related RSVs suggested either large scale contamination of the samples during sequencing, or contamination within the host).
 
 The ability to distinguish between single isolate contamination and community contamination is unique to amplicon sequence varient analysis methods (ASV) over operational taxonomic unit (OTU) based analysis as no clustering of highly related sequences occurs.
