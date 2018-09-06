@@ -7,7 +7,7 @@ Consort has been designed to specifically for 16S rRNA analysis of minimal micro
 By utilising the DADA2 package to conduct amplicon seaquence varient analysis, Consort is able to provide information on both the diversity of each consortium member and its total abundance
 
 # Installation
-Consort consists of a series of python scripts called from a main bash script, therefore does not require installation as such however a list of depandancies are provided below;
+Consort consists of a series of python and perl scripts called from a main bash script, therefore does not require installation as such however a list of depandancies are provided below;
 
 ### Python modules
 The following python modules must be installed before running Consort. These can simple be installed using the `pip install [module]` command on linux/mac machines
