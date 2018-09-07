@@ -1,0 +1,191 @@
+#!/usr/bin/env Rscript
+args = commandArgs()
+###########################################################################
+#
+#     Load packages
+#
+###########################################################################
+
+
+
+.cran_packages <- c("ggplot2", "gridExtra",'knitr')
+.bioc_packages <- c("dada2", "BiocStyle","phyloseq", "DECIPHER", "phangorn")
+.inst <- .cran_packages %in% installed.packages()
+if(any(!.inst)) {
+  install.packages(.cran_packages[!.inst],repos = "http://cran.us.r-project.org")
+}
+.inst <- .bioc_packages %in% installed.packages()
+if(any(!.inst)) {
+  source("http://bioconductor.org/biocLite.R")
+  biocLite(.bioc_packages[!.inst], ask = F)
+}
+# Load packages into session, and print package version
+sapply(c(.cran_packages, .bioc_packages), require, character.only = TRUE)
+
+
+library("knitr")
+library("BiocStyle")
+library('ggplot2')
+library('gridExtra')
+library('dada2')
+library('phyloseq')
+library('DECIPHER')
+library('phangorn')
+
+
+set.seed(100)
+
+
+###########################################################################
+#
+#     User options
+#
+###########################################################################
+
+
+#  Rscript DADA2_analysis.R pwd forward_trim reverse_trim
+# Set working location
+getwd()
+
+
+# Trim at which base?
+forward_trim <- as.double(args[6])
+reverse_trim <- as.double(args[7])
+
+
+
+###########################################################################
+#
+#     List files
+#
+###########################################################################
+
+# Files must be in a folder called 'Demultiplexed'
+miseq_path <- "./demultiplexed" # CHANGE to the directory containing the fastq files after unzipping.
+
+
+
+###########################################################################
+#
+#     Quality check
+#
+###########################################################################
+
+
+# Sort ensures forward/reverse reads are in same order
+fnFs <- sort(list.files(miseq_path, pattern="@F.fastq"))
+fnRs <- sort(list.files(miseq_path, pattern="@R.fastq"))
+# Extract sample names, assuming filenames have format: SAMPLENAME_XXX.fastq
+sampleNames <- sapply(strsplit(fnFs, "@"), `[`, 1)
+# Specify the full path to the fnFs and fnRs
+fnFs <- file.path(miseq_path, fnFs)
+fnRs <- file.path(miseq_path, fnRs)
+fnFs[1:3]
+sampleNames[1:3]
+
+plotQualityProfile(fnFs)
+
+plotQualityProfile(fnRs)
+
+
+
+
+###########################################################################
+#
+#     Filter reads
+#
+###########################################################################
+
+
+
+
+filt_path <- file.path("./Filtered") # Place filtered files in filtered/ subdirectory
+if(!file_test("-d", filt_path)) dir.create(filt_path)
+filtFs <- file.path(filt_path, paste0(sampleNames, "_F_filt.fastq.gz"))
+filtRs <- file.path(filt_path, paste0(sampleNames, "_R_filt.fastq.gz"))
+
+
+
+
+
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(forward_trim,reverse_trim),
+                     maxN=0, maxEE=c(2,2), truncQ=2, rm.phix=TRUE,
+                     compress=TRUE, multithread=TRUE) # On Windows set multithread=FALSE
+out
+
+
+
+
+
+###########################################################################
+#
+#     Dereplication
+#
+###########################################################################
+
+
+
+
+
+derepFs <- derepFastq(filtFs, verbose=TRUE)
+derepRs <- derepFastq(filtRs, verbose=TRUE)
+# Name the derep-class objects by the sample names
+names(derepFs) <- sampleNames
+names(derepRs) <- sampleNames
+
+
+
+
+###########################################################################
+#
+#     Remove sequencing error
+#
+###########################################################################
+
+errF <- learnErrors(filtFs, multithread=TRUE,pool=TRUE)
+errR <- learnErrors(filtRs, multithread=TRUE,pool=TRUE)
+
+
+plotErrors(errF)
+plotErrors(errR)
+
+
+dadaFs <- dada(derepFs, err=errF, multithread=TRUE,pool=TRUE)
+dadaRs <- dada(derepRs, err=errR, multithread=TRUE,pool=TRUE)
+
+
+
+
+
+
+###########################################################################
+#
+#     Merge pairs
+#
+###########################################################################
+mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs)
+seqtabAll <- makeSequenceTable(mergers[!grepl("Mock", names(mergers))])
+
+
+
+###########################################################################
+#
+#     Remove chimeras
+#
+###########################################################################
+seqtabNoC <- removeBimeraDenovo(seqtabAll)
+write.csv(seqtabNoC, file = "./ASV_table.csv")
+
+
+
+###########################################################################
+#
+#     Assign taxonomy
+#
+###########################################################################
+fastaRef <- "./Bin/silva_nr_v132_train_set-16S.fa.gz"
+taxTab <- assignTaxonomy(seqtabNoC, refFasta = fastaRef, multithread=TRUE)
+
+write.csv(taxTab, file = "./ASV_SILVA_taxonomy.csv")
+
+
