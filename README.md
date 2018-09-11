@@ -17,7 +17,7 @@ The following python modules must be installed before running Consort. These can
 
 
 ### R packages
-Whilst the following R packages are needed they will be installed during the running of Consort if not already installed, however a base installation of R is required.
+Whilst the following R packages and their dependancies are needed, they will be installed during the running of Consort if not already installed, however a base installation of R is required.
 
 * dada2
 * BiocStyle
