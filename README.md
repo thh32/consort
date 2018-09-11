@@ -8,7 +8,9 @@ Utilising the DADA2 package to conduct amplicon sequence varient analysis (https
 
 # Installation
 Consort consists of a series of python and perl scripts called from a main bash script.
-We suggest installation via downloading the Github repository (`git clone https://github.com/thh32/consort`) and then placing the consort directory in your path variable by editing your `.bashrc` file.
+We suggest installation via downloading the Github repository (`git clone https://github.com/thh32/consort`) and then placing the consort directory in your path variable by editing your `.bashrc` file. 
+
+You must also download the following file and place it within the `Bin/` folder for DADA2 taxonomic assignment; https://zenodo.org/record/1172783/files/silva_nr_v132_train_set.fa.gz?download=1
 
 ### Python modules
 The following python modules must be installed before running Consort. These can simple be installed using the `pip install [module]` command on linux/mac machines
