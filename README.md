@@ -44,15 +44,13 @@ Users must ensure that each of the following programs are installed and within t
 Consort can accept both single indexed and double indexed paired sequencing datasets.
 
 To run Consort you must enter the Consort directory and then edit the `Consort.sh` file with the following information;
-* Identify ifdataset is single or double indexed
+* Identify if dataset is single or double indexed
 * Index file/files
 * Sequence files (both R1 and R2)
 * Defined trimming length for forward and reverse reads
 * Number of mismatches to allow in the barcode
 * Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 30% prevalence with 1 read aligning within each positive sample
-* A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format within the `Reference_files/` folder. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums (https://www.nature.com/articles/nmicrobiol2016215).
-
-These files are provided using the following command line options
+* A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums within the `Reference_files/` folder (https://www.nature.com/articles/nmicrobiol2016215).
 
 
 | Option command| Description                                                                                              | Suggestion |
