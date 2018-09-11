@@ -45,8 +45,10 @@ set.seed(100)
 
 #  Rscript DADA2_analysis.R pwd forward_trim reverse_trim
 # Set working location
+scriptwd <- args[9]
+setwd(args[8])
 getwd()
-
+scriptwd
 
 # Trim at which base?
 forward_trim <- as.double(args[6])
@@ -183,7 +185,7 @@ write.csv(seqtabNoC, file = "./ASV_table.csv")
 #     Assign taxonomy
 #
 ###########################################################################
-fastaRef <- "./Bin/silva_nr_v132_train_set-16S.fa.gz"
+fastaRef <- paste(scriptwd, "/Bin/silva_nr_v132_train_set-16S.fa.gz", sep="")
 taxTab <- assignTaxonomy(seqtabNoC, refFasta = fastaRef, multithread=TRUE)
 
 write.csv(taxTab, file = "./ASV_SILVA_taxonomy.csv")
