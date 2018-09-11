@@ -30,9 +30,14 @@ Whilst the following R packages and their dependancies are needed, they will be 
 
 
 ### Programs
-Consort utilises BLASTN to annotate ribosomal sequence varients (RSVs) against the provided reference file containing the 16S rRNA sequences of all consortium members. Therefore an installation of BLAST is required. Testing was conducted using BLAST 2.6.0+.
+Users must ensure that each of the following programs are installed and within the path variable;
 
-Both muscle and FastTree are also used within Consort and are provided within the `Bin` folder ready for use.
+* BLASTN is used to annotate ribosomal sequence varients (RSVs) against the provided reference file containing the 16S rRNA sequences of all consortium members. Testing was conducted using BLAST 2.6.0+.
+
+* MUSCLE is used for alignment of the RSV sequences. Testing was done using MUSCLE v3.8.31.
+
+* FastTree is used to convert the MUSCLE alignment into a tree for downstream analysis and visualisation. Testing was done using FastTree version 2.1.7 SSE3.
+
 
 
 # Usage
