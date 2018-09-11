@@ -71,6 +71,11 @@ These files are provided using the following command line options
 | -b $INT     | Number of mismatches to allow within the barcode during demultiplexing  |  2     |
 
 
+### Example
+
+For the test dataset used in the paper the following command line options were provided;
+
+`Consort.sh  -r OligoMM10_plus2.fa -i1 OligoMM-rwth_Jan18-I1.fastq -i2 OligoMM-rwth_Jan18-I2.fastq -r1 OligoMM-rwth_Jan18-R1.fastq -r2 OligoMM-rwth_Jan18-R2.fastq -tf 250 -tr 250 -m Mapping_file.tab -i 2 -p 30.0 -a 1 -b 2`
 
 ### Reduce RAM usage
 Consort by default pools all sequencing data for error correction and RSV identification, however the increased sensitivity to rare varients comes at the cost of increased RAM usage. If RAM usage is too high the `Bin/DADA2_analysis.R` script can be edited by changing `pool=TRUE` to `pool=FALSE` on line 146,147,154 and 155. This will mean that error correction will be less accurate and rare varients may be missed and so is not recommended.
