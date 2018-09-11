@@ -17,7 +17,7 @@ usage3="    -h  show this help text"
 
 usage4="Required:"
 usage5="    -r  [FILE]   Reference file containing full length 16S rRNA sequences of each consortium member"
-usage6="    -i  [1/2]    State is double of single indexed"
+usage6="    -i  [1/2]    State if dataset is double or single indexed"
 usage7="    -i1 [FILE]   Index 1 file"
 usage8="    -i2 [FILE]   Index 2 file if double indexed"
 usage9="    -r1 [FILE]   Read file 1"
@@ -243,9 +243,9 @@ echo 'End; FASTA creation'
 #Rerun FastTree to recreate using only the new OTUs
 echo "Begin; Phylogenetic tree creation."
 echo "Aligning RSVs."
-${BASH_SOURCE%/*}/Bin/muscle -in ${PWD}/RSV_sequences.fasta -out ${PWD}/RSV_seq_alignment.afa -maxiters 10 -quiet
+muscle -in ${PWD}/RSV_sequences.fasta -out ${PWD}/RSV_seq_alignment.afa -maxiters 10 -quiet
 echo "Creating Tree."
-${BASH_SOURCE%/*}/Bin/FastTree -quiet -nosupport -gtr -nt ${PWD}/RSV_seq_alignment.afa > ${PWD}/RSV_tree.tre 
+FastTree -quiet -nosupport -gtr -nt ${PWD}/RSV_seq_alignment.afa > ${PWD}/RSV_tree.tre 
 
 echo "End; Phylogenetic tree creation."
 
@@ -312,9 +312,9 @@ echo 'End; RSV filtering '
 #Rerun FastTree to recreate using only the new OTUs
 echo "Begin; Phylogenetic tree creation."
 echo "Aligning RSVs."
-${BASH_SOURCE%/*}/Bin/muscle -in ${PWD}/RSV_filtered.fasta -out ${PWD}/RSV_filtered_alignment.afa -maxiters 10 -quiet
+muscle -in ${PWD}/RSV_filtered.fasta -out ${PWD}/RSV_filtered_alignment.afa -maxiters 10 -quiet
 echo "Creating Tree."
-${BASH_SOURCE%/*}/Bin/FastTree -quiet -nosupport -gtr -nt ${PWD}/RSV_filtered_alignment.afa > ${PWD}/RSV_filtered_tree.tre 
+FastTree -quiet -nosupport -gtr -nt ${PWD}/RSV_filtered_alignment.afa > ${PWD}/RSV_filtered_tree.tre 
 
 echo "End; Phylogenetic tree creation."
 
@@ -354,8 +354,8 @@ echo "End; Phylogenetic tree creation."
 #Create summed up abundances
 echo "Begin; Summing up abundances for each taxonomic lineage for seperate analysis"
 python ${BASH_SOURCE%/*}/Bin/Summing_up.py $PWD
-${BASH_SOURCE%/*}/Bin/muscle -in ${PWD}/RSV_taxonomic_groups.fasta -out ${PWD}/RSV_taxonomic_groups.afa -maxiters 10 -quiet
-${BASH_SOURCE%/*}/Bin/FastTree -quiet -nosupport -gtr -nt ${PWD}/RSV_taxonomic_groups.afa > ${PWD}/RSV_taxonomic_groups.tre 
+muscle -in ${PWD}/RSV_taxonomic_groups.fasta -out ${PWD}/RSV_taxonomic_groups.afa -maxiters 10 -quiet
+FastTree -quiet -nosupport -gtr -nt ${PWD}/RSV_taxonomic_groups.afa > ${PWD}/RSV_taxonomic_groups.tre 
 echo "End; Summing up abundances for each taxonomic lineage for seperate analysis"
 
 
