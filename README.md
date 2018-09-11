@@ -4,10 +4,11 @@
 
 Consort has been designed to specifically for 16S rRNA analysis of minimal microbial consortia. 
 
-By utilising the DADA2 package to conduct amplicon seaquence varient analysis (https://www.nature.com/articles/nmeth.3869), Consort is able to provide information on both the diversity of each consortium member and its total abundance
+Utilising the DADA2 package to conduct amplicon sequence varient analysis (https://www.nature.com/articles/nmeth.3869) allows Consort to provide information on both the diversity of each consortium member and its total abundance
 
 # Installation
-Consort consists of a series of python and perl scripts called from a main bash script, therefore does not require installation as such however a list of depandancies are provided below;
+Consort consists of a series of python and perl scripts called from a main bash script.
+We suggest installation via downloading the Github repository (`git clone https://github.com/thh32/consort`) and then placing the consort directory in your path variable by editing your `.bashrc` file.
 
 ### Python modules
 The following python modules must be installed before running Consort. These can simple be installed using the `pip install [module]` command on linux/mac machines
@@ -27,9 +28,7 @@ Whilst the following R packages are needed they will be installed during the run
 * gridextra
 * knitr
 
-The following possible errors may occur when installing on an Ubuntu machine;
-* If Rcurl cannot be isntalled try running `sudo apt-get install libcurl4-openssl-dev`
-* 
+
 ### Programs
 Consort utilises BLASTN to annotate ribosomal sequence varients (RSVs) against the provided reference file containing the 16S rRNA sequences of all consortium members. Therefore an installation of BLAST is required. Testing was conducted using BLAST 2.6.0+.
 
@@ -47,6 +46,26 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 * Number of mismatches to allow in the barcode
 * Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 30% prevalence with 1 read aligning within each positive sample
 * A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format within the `Reference_files/` folder. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums (https://www.nature.com/articles/nmicrobiol2016215).
+
+These files are provided using the following command line options
+
+
+| Option command| Description                                                                                              | Suggestion |
+| ------------- | -------------------------------------------------------------------------------------------------------- | ------- |
+|-r $FILE    | Reference file containing full length 16S rRNA sequences of each consortium member          |       |
+| -i $INT    | State if dataset is double or single indexed                                                    |        |
+| -i1 $FILE    | Index 1 file                                                    |        |
+| -i2 $FILE    | Index 2 file if double indexed                                                    |        |
+| -r1 $FILE       | Read file 1                                            |      |
+| -r2 $FILE       | Read file 2                                            |      |
+| -tf $INT     | Mapping file linking index sequences to sample names     |       |
+| -tr $INT     | Reverse read length wanted after trimming     |       |
+| -m $FILE     | Reverse read length wanted after trimming     |       |
+| -p $FLOAT     | Percentage of files that must be positive for a RSV for it to pass filtering  |  30     |
+| -a $INT     |  Number of reads an RSV must have within a sample to be deemed present  |  1     |
+| -b $INT     | Number of mismatches to allow within the barcode during demultiplexing  |  2     |
+
+
 
 ### Reduce RAM usage
 Consort by default pools all sequencing data for error correction and RSV identification, however the increased sensitivity to rare varients comes at the cost of increased RAM usage. If RAM usage is too high the `Bin/DADA2_analysis.R` script can be edited by changing `pool=TRUE` to `pool=FALSE` on line 146,147,154 and 155. This will mean that error correction will be less accurate and rare varients may be missed and so is not recommended.
@@ -71,6 +90,11 @@ As discussed within our paper, indepth study of the RSV diversity can provide no
 
 The ability to distinguish between single isolate contamination and community contamination is unique to amplicon sequence varient analysis methods (ASV) over operational taxonomic unit (OTU) based analysis as no clustering of highly related sequences occurs.
 
+
+
+
+# Known errors
+* If Rcurl cannot be installed try running `sudo apt-get install libcurl4-openssl-dev`
 
 
 
