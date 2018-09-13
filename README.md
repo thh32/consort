@@ -55,7 +55,7 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 * A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums within the `Reference_files/` folder (https://www.nature.com/articles/nmicrobiol2016215).
 
 
-| Option command| Description                                                                                              | Suggestion |
+| Command| Description                                                                                              | Suggestion |
 | ------------- | -------------------------------------------------------------------------------------------------------- | ------- |
 |-r $FILE    | Reference file containing full length 16S rRNA sequences of each consortium member          |       |
 | -i $INT    | State if dataset is double or single indexed                                                    |        |
