@@ -256,7 +256,7 @@ echo "End; Phylogenetic tree creation."
 ##################################
 echo "Begin; Consortium annotation."
 
-blastn -subject $reference_file -qcov_hsp_perc 80.0 -evalue 0.0000000000000000000000001 -perc_identity 97.0 -strand both -max_target_seqs 1 -outfmt 6 -query ${PWD}/RSV_sequences.fasta -out ${PWD}/Consortium_aligned_seqs.m8
+blastn -subject $reference_file -qcov_hsp_perc 80.0 -evalue 0.0000000000000000000000001 -perc_identity 97.0 -strand both -outfmt 6 -query ${PWD}/RSV_sequences.fasta -out ${PWD}/Consortium_aligned_seqs.m8
 
 
 echo "End; Consortium annotation."
