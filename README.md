@@ -52,7 +52,7 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 * Defined trimming length for forward and reverse reads
 * Number of mismatches to allow in the barcode
 * Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 0.0% prevalence and 25 reads based on the rationale of removing spurious ASVs
-* A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums within the `Reference_files/` folder (https://www.nature.com/articles/nmicrobiol2016215). Each reference file must include the full lineage of each consortium member in the fasta header as shown in the example below;
+* A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums within the `Reference_files/` folder (https://www.nature.com/articles/nmicrobiol2016215). Each reference file must include the full lineage of each consortium member in the FASTA header as shown in the example below;
 ```
 >Bacteria;Verrucomicrobia;Verrucomicrobiae;Verrucomicrobiales;Akkermansiaceae;Akkermansia;Akkermansia_muciniphila_strain_YL44
 AGAGTTTGATTCTGGCTCAGAACGAACGCTGGCGGCGTGGATAAGACATGCAAGTCGAACGGGAGAATTG...
@@ -106,7 +106,7 @@ The ability to distinguish between single isolate contamination and community co
 
 
 ## Common mistakes
-* Make sure your reference file is correct
+* If species level annotation arnt showing; Make sure your reference file is correct with the full lineage in the FASTA header
 * If no filtering is occuring remember; the abundance is that required for a sample to be deemed positive, NOT the cumulative abundance
 
 # Known errors
