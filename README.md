@@ -51,8 +51,12 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 * Sequence files (both R1 and R2)
 * Defined trimming length for forward and reverse reads
 * Number of mismatches to allow in the barcode
-* Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 30% prevalence with 1 read aligning within each positive sample
-* A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums within the `Reference_files/` folder (https://www.nature.com/articles/nmicrobiol2016215).
+* Prevalence and abundance cut-off for filtering (an RSV must have [abundance] reads assigned to it within [prevalence] percentage of the samples); the default is 0.0% prevalence and 25 reads based on the rationale of removing spurious ASVs
+* A reference file containing the 16s rRNA sequences for each member of your consortium must be provided in FASTA format. We provide reference files for both the OligoMM10 and OligoMM12 minimal consortiums within the `Reference_files/` folder (https://www.nature.com/articles/nmicrobiol2016215). Each reference file must include the full lineage of each consortium member in the fasta header as shown in the example below;
+```
+>Bacteria;Verrucomicrobia;Verrucomicrobiae;Verrucomicrobiales;Akkermansiaceae;Akkermansia;Akkermansia_muciniphila_strain_YL44
+AGAGTTTGATTCTGGCTCAGAACGAACGCTGGCGGCGTGGATAAGACATGCAAGTCGAACGGGAGAATTG...
+```
 
 
 | Command| Description                                                                                              | Suggestion |
@@ -66,8 +70,8 @@ To run Consort you must enter the Consort directory and then edit the `Consort.s
 | -tf $INT     | Mapping file linking index sequences to sample names     |       |
 | -tr $INT     | Reverse read length wanted after trimming     |       |
 | -m $FILE     | Reverse read length wanted after trimming     |       |
-| -p $FLOAT     | Percentage of files that must be positive for a RSV for it to pass filtering  |  30     |
-| -a $INT     |  Number of reads an RSV must have within a sample to be deemed present  |  1     |
+| -p $FLOAT     | Percentage of files that must be positive for a RSV for it to pass filtering  |  0.0     |
+| -a $INT     |  Number of reads an RSV must have within a sample to be deemed present  |  25     |
 | -b $INT     | Number of mismatches to allow within the barcode during demultiplexing  |  2     |
 
 
