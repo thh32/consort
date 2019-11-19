@@ -105,7 +105,9 @@ As discussed within our paper, indepth study of the RSV diversity can provide no
 The ability to distinguish between single isolate contamination and community contamination is unique to amplicon sequence varient analysis methods (ASV) over operational taxonomic unit (OTU) based analysis as no clustering of highly related sequences occurs.
 
 
-
+## Common mistakes
+* Make sure your reference file is correct
+* If no filtering is occuring remember; the abundance is that required for a sample to be deemed positive, NOT the cumulative abundance
 
 # Known errors
 * If Rcurl cannot be installed try running `sudo apt-get install libcurl4-openssl-dev`
