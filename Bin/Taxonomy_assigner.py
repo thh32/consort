@@ -3,17 +3,9 @@ import sys
 
 
 Taxonomy = {}
-temp = {}
 for line in open(sys.argv[1] + '/Consortium_aligned_seqs.m8','r'):
-    timber = line.replace('\n','').split('\t')
-    if timber[0] in temp:
-        nbit = float(timber[11])
-        obit = temp[timber[0]][1]
-        if nbit > obit:
-            temp[timber[0]] = [timber[1], nbit]
-            
-for k,v in temp.iteritems():
-    Taxonomy[k] = v[0] + '\n'
+    timber = line.split('\t')
+    Taxonomy[timber[0]] = timber[1] + '\n'
     
     
 mapping_names = {}
