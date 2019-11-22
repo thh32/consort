@@ -70,7 +70,7 @@ AGAGTTTGATTCTGGCTCAGAACGAACGCTGGCGGCGTGGATAAGACATGCAAGTCGAACGGGAGAATTG...
 | -tf $INT     | Mapping file linking index sequences to sample names     |       |
 | -tr $INT     | Reverse read length wanted after trimming     |       |
 | -m $FILE     | Reverse read length wanted after trimming     |       |
-| -p $FLOAT     | Percentage of files that must be positive for a RSV for it to pass filtering  |  0.0     |
+| -p $FLOAT     | Percentage of files that must be positive for a RSV for it to pass filtering  |  0.1     |
 | -a $INT     |  Number of reads an RSV must have within a sample to be deemed present  |  25     |
 | -b $INT     | Number of mismatches to allow within the barcode during demultiplexing  |  2     |
 
