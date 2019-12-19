@@ -170,7 +170,7 @@ if [ $index == '1' ]; then
 
 
     # This step demultiplxes the main folders to create files specific for each sample, named based on the samples ID from the mapping file
-    perl ${BASH_SOURCE%/*}/Bin/runDeMux.pl --study ./ --paired  --map $Mapping_file --I1 $I1 --R1 $R1 --R2 $R2 --accept $barcode_mismatch
+    perl ${BASH_SOURCE%/*}/Bin/runDeMux.pl --study ./  --map $Mapping_file --I1 $I1 --R1 $R1 --accept $barcode_mismatch
 fi
 
 
