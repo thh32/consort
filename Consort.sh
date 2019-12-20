@@ -237,7 +237,7 @@ echo 'End; DADA2 analysis'
 ################################
 echo 'Begin; FASTA creation'
 
-python ${BASH_SOURCE%/*}/Bin/FASTA_creation.py $PWD 
+python2.7 ${BASH_SOURCE%/*}/Bin/FASTA_creation.py $PWD 
 # This step convets the output DADA2 files
 echo 'End; FASTA creation'
 
@@ -276,14 +276,14 @@ echo "End; Consortium annotation."
 echo "Begin; Taxonomic assigner."
 
 # This step assigns taxonomy to each RSV  
-python ${BASH_SOURCE%/*}/Bin/Taxonomy_assigner.py $PWD
+python2.7 ${BASH_SOURCE%/*}/Bin/Taxonomy_assigner.py $PWD
 echo "End; Taxonomic assigner."
 
 
 echo "Begin; Combining taxonomic and RSV abundance information"
 
 #This step merges the taxonomy and abundance information to form a single file for analysis
-python ${BASH_SOURCE%/*}/Bin/Combination_Abund_Taxon.py $PWD
+python2.7 ${BASH_SOURCE%/*}/Bin/Combination_Abund_Taxon.py $PWD
 echo "End; Combining taxonomic and RSV abundance information"
 
 
@@ -313,7 +313,7 @@ echo "End; Combining taxonomic and RSV abundance information"
 ################################
 echo 'Begin; RSV filtering'
 # This step produces both the filtered FASTA file and combined abundance table
-python ${BASH_SOURCE%/*}/Bin/Filter_RSVs.py $PWD $prevalence $abundance
+python2.7 ${BASH_SOURCE%/*}/Bin/Filter_RSVs.py $PWD $prevalence $abundance
 echo 'End; RSV filtering '
 
 #Rerun FastTree to recreate using only the new OTUs
@@ -360,7 +360,7 @@ echo "End; Phylogenetic tree creation."
 
 #Create summed up abundances
 echo "Begin; Summing up abundances for each taxonomic lineage for seperate analysis"
-python ${BASH_SOURCE%/*}/Bin/Summing_up.py $PWD
+python2.7 ${BASH_SOURCE%/*}/Bin/Summing_up.py $PWD
 muscle -in ${PWD}/RSV_taxonomic_groups.fasta -out ${PWD}/RSV_taxonomic_groups.afa -maxiters 10 -quiet
 FastTree -quiet -nosupport -gtr -nt ${PWD}/RSV_taxonomic_groups.afa > ${PWD}/RSV_taxonomic_groups.tre 
 echo "End; Summing up abundances for each taxonomic lineage for seperate analysis"
@@ -390,4 +390,4 @@ echo "End; Summing up abundances for each taxonomic lineage for seperate analysi
 #
 ###########################################################################################################################################################
 
-python ${BASH_SOURCE%/*}/Bin/Summery_maker.py $PWD
+python2.7 ${BASH_SOURCE%/*}/Bin/Summery_maker.py $PWD
