@@ -174,7 +174,7 @@ write.csv(seqtabNoC, file = "./ASV_table.csv")
 #     Assign taxonomy
 #
 ###########################################################################
-fastaRef <- paste(scriptwd, "/Bin/silva_nr_v132_train_set-16S.fa.gz", sep="")
+fastaRef <- paste(scriptwd, "/Bin/silva_nr_v132_train_set.fa.gz", sep="")
 taxTab <- assignTaxonomy(seqtabNoC, refFasta = fastaRef, multithread=TRUE)
 
 
