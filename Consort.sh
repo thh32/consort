@@ -202,10 +202,17 @@ echo 'End; Demultiplexing samples'
 #   Run DADA2 analysis
 #
 ################################
+
 echo 'Begin; DADA2 analysis'
-Rscript ${BASH_SOURCE%/*}/Bin/DADA2_analysis.R $forward_trim $reverse_trim $PWD ${BASH_SOURCE%/*}
+if [ $index == '1' ]; then
+    reverse_trim=0
+    Rscript ${BASH_SOURCE%/*}/Bin/DADA2_analysis_single.R $forward_trim $reverse_trim $PWD ${BASH_SOURCE%/*}
+fi
 # This step does the majpr DADA2 ASV analysis and provides a sequence table 
 
+if [ $index == '2' ]; then
+    Rscript ${BASH_SOURCE%/*}/Bin/DADA2_analysis.R $forward_trim $reverse_trim $PWD ${BASH_SOURCE%/*}
+fi
 echo 'End; DADA2 analysis'
 
 
